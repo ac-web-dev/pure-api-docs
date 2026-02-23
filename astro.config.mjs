@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import starlightUiTweaks from "starlight-ui-tweaks";
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,6 +18,7 @@ export default defineConfig({
         },
       ],
       customCss: ["./src/styles/custom.css"],
+      plugins: [starlightUiTweaks({})],
       sidebar: [
         {
           label: "Getting Started",
