@@ -1,0 +1,30 @@
+---
+title: getOvercast
+description: Returns the world's overcast modulator.
+---
+
+Returns the world's overcast modulator.
+
+```lua
+pure.world.getOvercast()
+```
+
+## Return Table
+
+| Type     | Description                         |
+| :------- | :---------------------------------- |
+| `number` | A value in the range `0.0` to `1.0` |
+
+## Description
+
+A helper function that indicates whether the sky is fully covered by clouds.
+This modulator affects multiple internal parameters.
+
+:::caution
+
+This modulator is skewed toward lower values:
+
+- `0.0`-`0.8` produces generally bright, lightly overcast conditions
+- `>0.8` produces thick, dark overcast conditions
+
+:::

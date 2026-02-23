@@ -1,0 +1,23 @@
+---
+title: getAmbient
+description: Returns the ambient light color.
+---
+
+Returns the current ambient light color.
+
+```lua
+pure.light.getAmbient()
+```
+
+:::note
+
+Pure generates an exclusive instance of this variable per frame.
+You can modify it, but it will reset in the following frame.
+
+:::
+
+## Return Table
+
+| Type  | Description                           |
+| :---- | :------------------------------------ |
+| `rgb` | An instance of the ambient RGB color. |
