@@ -2,6 +2,51 @@
 title: getHeading
 ---
 
+Get the heading of the {/* active? */} camera in degrees.
+
 ```lua
 pure.camera.getHeading()
 ```
+
+## Return Table
+
+| Type     | Description                       |
+| :------- | :-------------------------------- |
+| `number` | A value in the range `0` to `360` |
+
+## Description
+
+Returns the heading of the camera in degrees.
+
+| Angle  | Direction |
+| :----- | :-------- |
+| `0°`   | North     |
+| `90°`  | East      |
+| `180°` | South     |
+| `270°` | West      |
+
+:::note
+
+The returned value for this function follows standard compass rotation, measured clockwise from North.
+Be aware that trigonometric functions, such as `sin` or `cos`, assume counter-clockwise rotation starting from East.
+
+{/* to convert a compass heading to a standard mathematical angle, mathAngle = (90 - compassAngle) % 360 */}
+{/* consider adding the maths notation for this, using mathjax */}
+
+```lua title=".lua"
+local compassAngle = pure.camera.getHeading()
+local mathAngle = (90 - compassAngle) % 360
+```
+
+{/* consider also code groups for separate languages, but these will have to be via a custom component */}
+This can then be used in the following manner:
+
+```lua title=".lua"
+local r = math.rad(mathAngle)
+local x = math.cos(r)
+local y = math.sin(r)
+```
+
+Where `x` and `y` form the directional vector corresponding to the camera's heading.
+
+:::
