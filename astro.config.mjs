@@ -2,11 +2,46 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import starlightUiTweaks from "starlight-ui-tweaks";
+import starlightLinksValidator from "starlight-links-validator";
+import { visit } from "unist-util-visit";
+
+const base = "/pure-api-docs";
+
+/**
+ * plugin to automatically prepend base path
+ * to absolute internal links and images
+ * @returns {(tree: any) => void}
+ */
+function remarkPrependBase() {
+  return (tree) => {
+    visit(tree, "link", (node) => {
+      if (
+        node.url.startsWith("/") &&
+        !node.url.startsWith(base) &&
+        !node.url.startsWith("//")
+      ) {
+        node.url = `${base}${node.url}`;
+      }
+    });
+    visit(tree, "image", (node) => {
+      if (
+        node.url.startsWith("/") &&
+        !node.url.startsWith(base) &&
+        !node.url.startsWith("//")
+      ) {
+        node.url = `${base}${node.url}`;
+      }
+    });
+  };
+}
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://ac-web-dev.github.io",
-  base: "/pure-api-docs/",
+  base: base,
+  markdown: {
+    remarkPlugins: [remarkPrependBase],
+  },
   integrations: [
     starlight({
       title: "Pure",
@@ -18,7 +53,12 @@ export default defineConfig({
         },
       ],
       customCss: ["./src/styles/custom.css"],
-      plugins: [starlightUiTweaks({})],
+      plugins: [
+        starlightUiTweaks({}),
+        starlightLinksValidator({
+          errorOnRelativeLinks: true,
+        }),
+      ],
       sidebar: [
         {
           label: "Getting Started",

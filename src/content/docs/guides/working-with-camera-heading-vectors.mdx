@@ -4,13 +4,14 @@ title: Working with Camera Heading Vectors
 
 import { Steps } from "@astrojs/starlight/components";
 
-Use `pure.camera.getHeading` to obtain a compass heading and convert it into a unit direction vector
-suitable for movement, raycasting, or trig functions.
+Use `pure.camera.getHeading()` to obtain a compass heading and convert it into a unit direction vector
+suitable for movement, raycasting, or trigonometric functions.
 
 ## Problem
 
-`getHeading()` returns an angle measured clockwise from North, whereas trigonometric functions, such as `sin` and `cos`,
-expect angles measured counterclockwise from the positive X-axis, East. These angles must be converted before use.
+`getHeading()` returns an angle measured clockwise from North.
+Trigonometric functions such as `sin` and `cos` expect angles measured counter-clockwise from the positive X-axis (East).
+The angle must be converted before use.
 
 ## Steps
 
@@ -22,19 +23,26 @@ expect angles measured counterclockwise from the positive X-axis, East. These an
     local heading = pure.camera.getHeading()
     ```
 
-2.  Convert the heading to a mathematical angle
+2.  Convert to a mathematical angle
 
     ```lua
-    local mathAngle = (90 - heading) -- % 360 is optional
+    local mathAngle = 90 - heading
     ```
 
-3.  Convert the angle to radians
+    :::note
+
+    `% 360` normalizes the angle to the range `0`-`360`.  
+    This is optional; `sin` and `cos` work correctly with angles outside that range.
+
+    :::
+
+3.  Convert to radians
 
     ```lua
     local radians = math.rad(mathAngle)
     ```
 
-4.  From this, we can now compute the direction vector
+4.  Compute the direction vector
 
     ```lua
     local direction = {
@@ -43,13 +51,13 @@ expect angles measured counterclockwise from the positive X-axis, East. These an
     }
     ```
 
-    Where `x` and `y` represent the unit direction vector for the camera's heading.
+    `x` and `y` form a unit direction vector for the camera's heading.
 
 </Steps>
 
-## Example Usage
+## Example
 
-```lua
+```lua title=".lua"
 local heading = pure.camera.getHeading()
 local mathAngle = (90 - heading)
 local r = math.rad(mathAngle)
@@ -63,15 +71,10 @@ print("Camera Heading:", heading)
 print("Direction Vector:", dir.x, dir.y)
 ```
 
-:::note
-The conversion assumes a 2D plane where camera's heading is projected on the X-Y plane.
-For 3D, additional calculations would be needed to account for pitch and roll.
-:::
-
 :::tip
-This vector is normalized.
+The `dir` vector is normalized.
 :::
 
 ## Related
 
-- [getHeading](../reference/camera/get-heading)
+- [getHeading](/reference/camera/get-heading)

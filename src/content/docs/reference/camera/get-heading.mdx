@@ -2,18 +2,19 @@
 title: getHeading
 ---
 
-Get the heading of the {/* active? */} camera in degrees.
+Get the heading of the camera in degrees.
 
 ```lua
 pure.camera.getHeading()
 ```
 
 Returns the camera heading in degrees, in the range `0`-`360`.
+`0°` corresponds to North and increases clockwise.
 
 :::note
 
-This uses compass rotation, where angles increase clockwise from North.
-If you need a direction vector for `sin`/`cos`, convert the angle first.
-See the [guide on working with camera heading vectors](../../../guides/working-with-camera-heading-vectors) for details.
+Angles use compass rotation (clockwise from North).
+To obtain a direction vector using `sin`/`cos`, convert the angle first.
+See the [guide on working with camera heading vectors](/guides/working-with-camera-heading-vectors).
 
 :::

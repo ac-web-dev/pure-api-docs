@@ -1,39 +1,20 @@
 ---
 title: getOcclusion
-description: Returns the ambient occlusion factor at the camera's current position.
+description: Returns the ambient occlusion factor at the camera position.
 ---
 
-Returns the ambient occlusion factor at the camera's current world position.
+Return the ambient occlusion factor at the camera's current world position.
 
 ```lua
 pure.camera.getOcclusion()
 ```
 
+Returns an ambient occlusion factor as a number.
+This value is sampled from the track's vertex ambient occlusion (VAO) data at the camera position.
+
 :::note
 
-_Vertex Ambient Occlusion_ (VAO) stores a precomputed ambient lighting factor per vertex.
-These values approximate how exposed a surface is to ambient light.
-Lower exposure occurs in creases, tunnels, and areas enclosed by static geometry.
-
-:::
-
-## Return Table
-
-| Type     | Description                                                                                           |
-| :------- | :---------------------------------------------------------------------------------------------------- |
-| `number` | The ambient occlusion factor at the camera position. {/* i presume the range is likely 0.0 to 1.0 */} |
-
-## Description
-
-Returns the current occlusion level affecting the camera.
-This is derived from the VAO patch data at the camera's current world coordinates.
-{/* consider adding detail abt vao patches */}
-
-:::tip
-
-This value is typically used to determine if the camera is inside a tunnel,
-under a bridge, or in a shadowed area defined by the track's static geometry.
-{/* i could be making this up */}
-{/* is 0.0 indicating full occlusion or vice versa? i assume vao acts as a multiplier */}
+[VAO](https://iquilezles.org/articles/pervertexao/) stores a precomputed ambient-lighting factor per vertex, approximating how enclosed
+a point is by static geometry.
 
 :::
