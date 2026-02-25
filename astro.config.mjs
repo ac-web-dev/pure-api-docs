@@ -26,6 +26,16 @@ export default defineConfig({
           items: [{ label: "Introduction", link: "get-started/intro" }],
         },
         {
+          label: "Guides",
+          collapsed: true,
+          items: [
+            {
+              label: "Working with Camera Heading Vectors",
+              link: "guides/working-with-camera-heading-vectors",
+            },
+          ],
+        },
+        {
           label: "Reference",
           collapsed: true,
           autogenerate: { directory: "reference" },

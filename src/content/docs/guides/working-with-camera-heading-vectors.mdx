@@ -1,0 +1,77 @@
+---
+title: Working with Camera Heading Vectors
+---
+
+import { Steps } from "@astrojs/starlight/components";
+
+Use `pure.camera.getHeading` to obtain a compass heading and convert it into a unit direction vector
+suitable for movement, raycasting, or trig functions.
+
+## Problem
+
+`getHeading()` returns an angle measured clockwise from North, whereas trigonometric functions, such as `sin` and `cos`,
+expect angles measured counterclockwise from the positive X-axis, East. These angles must be converted before use.
+
+## Steps
+
+<Steps>
+
+1.  Fetch the camera's heading
+
+    ```lua
+    local heading = pure.camera.getHeading()
+    ```
+
+2.  Convert the heading to a mathematical angle
+
+    ```lua
+    local mathAngle = (90 - heading) -- % 360 is optional
+    ```
+
+3.  Convert the angle to radians
+
+    ```lua
+    local radians = math.rad(mathAngle)
+    ```
+
+4.  From this, we can now compute the direction vector
+
+    ```lua
+    local direction = {
+      x = math.cos(radians),
+      y = math.sin(radians)
+    }
+    ```
+
+    Where `x` and `y` represent the unit direction vector for the camera's heading.
+
+</Steps>
+
+## Example Usage
+
+```lua
+local heading = pure.camera.getHeading()
+local mathAngle = (90 - heading)
+local r = math.rad(mathAngle)
+
+local dir = {
+  x = math.cos(r),
+  y = math.sin(r)
+}
+
+print("Camera Heading:", heading)
+print("Direction Vector:", dir.x, dir.y)
+```
+
+:::note
+The conversion assumes a 2D plane where camera's heading is projected on the X-Y plane.
+For 3D, additional calculations would be needed to account for pitch and roll.
+:::
+
+:::tip
+This vector is normalized.
+:::
+
+## Related
+
+- [getHeading](../reference/camera/get-heading)
