@@ -1,0 +1,19 @@
+---
+title: getOcclusion
+description: Returns the ambient occlusion factor at the camera position.
+slug: 0.180a/reference/camera/get-occlusion
+---
+
+Return the ambient occlusion factor at the camera's current world position.
+
+```lua
+pure.camera.getOcclusion()
+```
+
+Returns an ambient occlusion factor as a number.
+This value is sampled from the track's vertex ambient occlusion (VAO) data at the camera position.
+
+:::note
+[VAO](https://iquilezles.org/articles/pervertexao/) stores a precomputed ambient-lighting factor per vertex, approximating how enclosed
+a point is by static geometry.
+:::

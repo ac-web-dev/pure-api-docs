@@ -1,0 +1,21 @@
+{
+  "sidebar": [
+    {
+      "label": "Getting Started",
+      "collapsed": true,
+      "items": [
+        {
+          "label": "Introduction",
+          "link": "get-started/intro"
+        }
+      ]
+    },
+    {
+      "label": "Reference",
+      "collapsed": true,
+      "autogenerate": {
+        "directory": "reference"
+      }
+    }
+  ]
+}

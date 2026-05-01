@@ -1,9 +1,10 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
-import starlightUiTweaks from "starlight-ui-tweaks";
+//import starlightUiTweaks from "starlight-ui-tweaks";
 import starlightLinksValidator from "starlight-links-validator";
 import { visit } from "unist-util-visit";
+import starlightVersions from "starlight-versions";
 
 const base = "/pure-api-docs";
 
@@ -54,9 +55,12 @@ export default defineConfig({
       ],
       customCss: ["./src/styles/custom.css"],
       plugins: [
-        starlightUiTweaks({}),
+        //starlightUiTweaks({}),
         starlightLinksValidator({
           errorOnRelativeLinks: true,
+        }),
+        starlightVersions({
+          versions: [{ slug: "0.180a" }],
         }),
       ],
       sidebar: [
