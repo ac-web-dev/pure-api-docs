@@ -36,10 +36,12 @@ export default defineConfig({
         ThemeSelect: "./src/components/CustomThemeSelect.astro",
       },
       plugins: [
-        starlightUiTweaks({
-          navbarLinks: [{ label: "Docs", href: "/get-started/intro" }],
-        }),
         starlightBasePath(),
+        starlightUiTweaks({
+          navbarLinks: [
+            { label: "Docs", href: "pure-api-docs/get-started/intro" },
+          ],
+        }),
         starlightLinksValidator({
           errorOnRelativeLinks: true,
         }),
