@@ -39,7 +39,7 @@ export default defineConfig({
         starlightBasePath(),
         starlightUiTweaks({
           navbarLinks: [
-            { label: "Docs", href: "pure-api-docs/get-started/intro" },
+            { label: "Docs", href: "/pure-api-docs/get-started/intro" },
           ],
         }),
         starlightLinksValidator({
