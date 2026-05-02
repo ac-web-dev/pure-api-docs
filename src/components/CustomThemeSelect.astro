@@ -1,0 +1,8 @@
+---
+import type { Props } from "@astrojs/starlight/props";
+import VersionSelect from "starlight-versions/components/VersionSelect.astro";
+import UiTweaksThemeSelect from "starlight-ui-tweaks/overrides/ThemeSelect.astro";
+---
+
+<VersionSelect {...Astro.props} />
+<UiTweaksThemeSelect {...Astro.props} />

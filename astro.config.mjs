@@ -1,48 +1,18 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
-//import starlightUiTweaks from "starlight-ui-tweaks";
 import starlightLinksValidator from "starlight-links-validator";
-import { visit } from "unist-util-visit";
 import starlightVersions from "starlight-versions";
+import starlightScrollToTop from "starlight-scroll-to-top";
+import starlightUiTweaks from "starlight-ui-tweaks";
+import { starlightBasePath } from "starlight-base-path";
 
 const base = "/pure-api-docs";
-
-/**
- * plugin to automatically prepend base path
- * to absolute internal links and images
- * @returns {(tree: any) => void}
- */
-function remarkPrependBase() {
-  return (tree) => {
-    visit(tree, "link", (node) => {
-      if (
-        node.url.startsWith("/") &&
-        !node.url.startsWith(base) &&
-        !node.url.startsWith("//")
-      ) {
-        node.url = `${base}${node.url}`;
-      }
-    });
-    visit(tree, "image", (node) => {
-      if (
-        node.url.startsWith("/") &&
-        !node.url.startsWith(base) &&
-        !node.url.startsWith("//")
-      ) {
-        node.url = `${base}${node.url}`;
-      }
-    });
-  };
-}
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://ac-web-dev.github.io",
   base: base,
-  markdown: {
-    remarkPlugins: [remarkPrependBase],
-  },
   integrations: [
     starlight({
       title: "Pure",
@@ -52,17 +22,39 @@ export default defineConfig({
           label: "GitHub",
           href: "https://github.com/ac-web-dev/pure-api-docs",
         },
+        {
+          icon: "patreon",
+          label: "Patreon",
+          href: "https://patreon.com/peterboese",
+        },
       ],
+      expressiveCode: {
+        themes: ["github-dark", "github-light"],
+      },
       customCss: ["./src/styles/custom.css"],
+      components: {
+        ThemeSelect: "./src/components/CustomThemeSelect.astro",
+      },
       plugins: [
-        //starlightUiTweaks({}),
+        starlightUiTweaks({
+          navbarLinks: [{ label: "Docs", href: "/get-started/intro" }],
+        }),
+        starlightBasePath(),
         starlightLinksValidator({
           errorOnRelativeLinks: true,
         }),
         starlightVersions({
           versions: [{ slug: "0.180a" }],
         }),
+        starlightScrollToTop({
+          smoothScroll: true,
+          showOnHomepage: false,
+        }),
       ],
+      editLink: {
+        baseUrl: "https://github.com/ac-web-dev/pure-api-docs/edit/main/",
+      },
+      lastUpdated: true,
       sidebar: [
         {
           label: "Getting Started",
