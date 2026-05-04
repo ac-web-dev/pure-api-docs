@@ -40,6 +40,7 @@ export default defineConfig({
         starlightUiTweaks({
           navbarLinks: [
             { label: "Docs", href: "/pure-api-docs/get-started/intro" },
+            { label: "About", href: "/pure-api-docs/about" },
           ],
         }),
         starlightLinksValidator({
@@ -77,6 +78,11 @@ export default defineConfig({
           label: "Reference",
           collapsed: true,
           autogenerate: { directory: "reference" },
+        },
+        {
+          label: "About",
+          collapsed: true,
+          autogenerate: { directory: "about" },
         },
       ],
     }),
