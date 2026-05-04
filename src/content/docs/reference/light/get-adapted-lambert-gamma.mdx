@@ -1,8 +1,41 @@
 ---
 title: getAdaptedLambertGamma
 description: Returns the final calculated Lambert Gamma value after all environmental adaptations are applied.
+draft: true
 ---
+
+:::caution
+This page may be incomplete, with details subject to change.
+:::
 
 ```lua
 pure.light.getAdaptedLambertGamma()
 ```
+
+## Returns
+
+| Type     | Description                                                                      |
+| :------- | :------------------------------------------------------------------------------- |
+| `number` | The final adapted Lambert Gamma value currently applied to the rendering engine. |
+
+## Description
+
+{/* see:
+
+    pure_sharing.lua,
+    world_sun_light.lua
+
+*/}
+
+`getAdaptedLambertGamma` returns the gamma value currently being used by Pure to calculate material lighting contrast.
+While [`getLambertGamma`](/reference/light/get-lambert-gamma) returns the static base setting,
+this function returns the resulting value after Pure has applied dynamic environmental adjustments.
+
+This value accounts for the current sun-angle multiplier (if enabled via [`adaptLambertGamma`](/reference/light/adapt-lambert-gamma))
+and is further adjusted based on the current presence of shadows.
+
+## Related
+
+- [setLambertGamma](/reference/light/set-lambert-gamma)
+- [getLambertGamma](/reference/light/get-lambert-gamma)
+- [adaptLambertGamma](/reference/light/adapt-lambert-gamma)

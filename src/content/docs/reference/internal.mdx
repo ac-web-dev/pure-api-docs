@@ -1,0 +1,15 @@
+---
+title: internal
+description: internal to docs
+draft: true
+---
+
+import { Code } from '@astrojs/starlight/components';
+
+export const synCode = `pure.light.adaptLambertGamma
+(
+    enabled? : boolean
+)`;
+export const highlights = ['boolean'];
+
+<Code code={synCode} lang="lua" mark={highlights} />

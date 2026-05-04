@@ -1,8 +1,41 @@
 ---
 title: setLambertGamma
 description: Sets the base gamma value used to calculate light distribution across material surfaces.
+draft: true
 ---
 
+:::caution
+This page may be incomplete, with details subject to change.
+:::
+
 ```lua
-pure.light.setLambertGamma()
+pure.light.setLambertGamma(x)
 ```
+
+## Parameters
+
+| Parameter | Type      | Description                                                                                                                        |
+| :-------- | :-------- | :--------------------------------------------------------------------------------------------------------------------------------- |
+| `x`       | `number?` | The base gamma value. A value less than zero sets the internal state to `-1`. If the value is `nil` or omitted, defaults to `1.0`. |
+
+## Description
+
+{/* see:
+
+    pure_sharing.lua,
+    world_sun_light.lua
+
+*/}
+
+`setLambertGamma` sets the base gamma value used to calculate light distribution across material surfaces.
+This value influences the `ksDiffuse` component of materials based on their angle relative to the light source.
+
+Pure stores the value internally and, when `ac.setLambertGamma` is available,
+applies its reciprocal to the rendering engine.
+This calculation accounts for internal multipliers and sun-angle dependencies unless those adaptations are explicitly disabled.
+
+## Related
+
+- [getLambertGamma](/reference/light/get-lambert-gamma)
+- [adaptLambertGamma](/reference/light/adapt-lambert-gamma)
+- [getAdaptedLambertGamma](/reference/light/get-adapted-lambert-gamma)

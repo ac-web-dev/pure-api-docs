@@ -1,8 +1,41 @@
 ---
 title: getLambertGamma
 description: Returns the currently set base Lambert Gamma value.
+draft: true
 ---
+
+:::caution
+This page may be incomplete, with details subject to change.
+:::
 
 ```lua
 pure.light.getLambertGamma()
 ```
+
+## Returns
+
+| Type     | Description                                             |
+| :------- | :------------------------------------------------------ |
+| `number` | The current base Lambert Gamma value stored internally. |
+
+## Description
+
+{/* see:
+
+    pure_sharing.lua,
+    world_sun_light.lua
+
+*/}
+
+`getLambertGamma` retrieves the base value used for material lighting contrast.
+This value represents the "target" gamma before any internal sun-angle environmental adaptations are applied.
+
+The value defaults to `2.2` if a compatible version of CSP (build `2057` or higher) is detected at initialization.
+If an older version of CSP is in use, the function returns `-1`.
+This value is updated whenever [`setLambertGamma`](/reference/light/set-lambert-gamma) is called.
+
+## Related
+
+- [setLambertGamma](/reference/light/set-lambert-gamma)
+- [getAdaptedLambertGamma](/reference/light/get-adapted-lambert-gamma)
+- [adaptLambertGamma](/reference/light/adapt-lambert-gamma)

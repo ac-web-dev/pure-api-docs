@@ -1,8 +1,41 @@
 ---
 title: adaptLambertGamma
 description: Toggles the automatic scaling of Lambert Gamma based on the current sun angle.
+draft: true
 ---
 
+:::caution
+This page may be incomplete, with details subject to change.
+:::
+
 ```lua
-pure.light.adaptLambertGamma()
+pure.light.adaptLambertGamma(enabled)
 ```
+
+## Parameters
+
+| Parameter | Type       | Description                                                                                               |
+| :-------- | :--------- | :-------------------------------------------------------------------------------------------------------- |
+| `enabled` | `boolean?` | Determines if the Lambert Gamma should scale based on sun angle. If `nil` or omitted, defaults to `true`. |
+
+## Description
+
+{/* see:
+
+    pure_sharing.lua,
+    world_sun_light.lua
+
+*/}
+
+`adaptLambertGamma` controls whether Pure dynamically adjusts the base Lambert Gamma value according to the current elevation of the sun.
+When enabled, the internal lighting engine applies a multiplier from the sunlight LUT to the base gamma value.
+This adaptation is designed to maintain consistent visual contrast on surfaces as environmental lighting conditions change throughout the day.
+
+When this setting is disabled, the system ignores the sun-angle multiplier and uses the base gamma value directly
+(though it remains subject to shadow density adjustments).
+
+## Related
+
+- [setLambertGamma](/reference/light/set-lambert-gamma)
+- [getLambertGamma](/reference/light/get-lambert-gamma)
+- [getAdaptedLambertGamma](/reference/light/get-adapted-lambert-gamma)
