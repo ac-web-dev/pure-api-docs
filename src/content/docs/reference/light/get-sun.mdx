@@ -1,8 +1,33 @@
 ---
 title: getSun
 description: Returns the current sunlight color as an rgb object.
+draft: true
 ---
+
+:::caution
+This page may be incomplete, with details subject to change.
+:::
 
 ```lua
 pure.light.getSun()
 ```
+
+## Returns
+
+| Type  | Description                 |
+| :---- | :-------------------------- |
+| `rgb` | The current sunlight color. |
+
+## Description
+
+`getSun` returns the color of the sunlight currently calculated by the weather engine.
+
+Pure generated an exclusive instance of this `rgb` variable for the calling script.
+This allows the object to be manipulated within the current frame without affecting the internal state or other scripts.
+The instance is reset at the start of the next frame.
+
+## Related
+
+- [getMoon](/reference/light/getMoon)
+- [getLightSource](/reference/light/get-light-source)
+- [getAmbient](/reference/light/get-ambient)

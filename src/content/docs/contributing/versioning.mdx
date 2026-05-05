@@ -1,0 +1,49 @@
+---
+title: Versioning
+description: How documentation versioning works.
+draft: true
+---
+
+:::caution
+This page may be incomplete, with details subject to change.
+:::
+
+Pure is a versioned software, with changes to its API occuring between releases.
+The documentation mirrors this so that users on older versions of Pure can reference the correct API surface for their installation,
+even if it's not recommended.
+
+## Version Selection
+
+The version selector in the header allows switching between documented versions of Pure.
+The latest version is always the default and contains the most up-to-date content.
+Older versions are accessible via the dropdown and are clearly marked as such.
+
+Older archived versions contain only the `reference` section, covering only the API surface as it existed at that time.
+The latest version includes all content, reference, guides, and any other resources.
+
+:::note
+Pages that did not exist in an older version of Pure are simply absent from that version's documentation.
+If a page you are looking for does not appear in the sidebar, it may have been introduced in a later release.
+:::
+
+## Versioned Content
+
+When contributing, always target `src/content/docs` and its corresponding namespaces for the latest version.
+
+If your contribution is relevant to older versions, you can either backport it to the relevant version folder,
+or leave it in latest, clearly marked, and a maintainer can backport it for you.
+
+:::caution
+Most archived version folders are read-only snapshots and should not be edited directly without consulting a maintainer.
+:::
+
+When a new version of Pure is released,
+the current root content is archived into a versioned folder and the root continues as the new latest.
+Archived versions are not actively maintained beyond simple corrections.
+
+## Identifying Versions
+
+To determine which version of Pure a function was introduced in, cross-reference the SDK lua files between versions.
+Each version's SDK lua table provides the information for what exists at that release.
+
+

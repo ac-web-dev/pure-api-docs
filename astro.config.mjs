@@ -84,6 +84,11 @@ export default defineConfig({
           collapsed: true,
           autogenerate: { directory: "about" },
         },
+        {
+          label: "Contributing",
+          collapsed: true,
+          autogenerate: { directory: "contributing" },
+        },
       ],
     }),
   ],
