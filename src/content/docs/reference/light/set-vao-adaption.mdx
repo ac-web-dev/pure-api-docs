@@ -1,8 +1,33 @@
 ---
 title: setVAOAdaption
 description: Sets the strength of automatic Ambient Occlusion (VAO) adjustments based on cloud shadows and overcast state.
+draft: true
 ---
 
+:::caution
+This page may be incomplete, with details subject to change.
+:::
+
 ```lua
-pure.light.setVAOAdaption()
+pure.light.setVAOAdaption(x)
 ```
+
+## Parameters
+
+| Parameter | Type                    | Description                                                                                                           |
+| :-------- | :---------------------- | :-------------------------------------------------------------------------------------------------------------------- |
+| `x`       | `boolean?` \| `number?` | The adaptation intensity. `true` sets the value to `1.0`. If `false`, `nil`, or omitted, the value defaults to `0.0`. |
+
+## Description
+
+`setVAOAdaption` defines the strength of Pure's vertex ambient occlusion (VAO) scaling.
+When enabled, the system dynamically increases VAO intensity during overcast weather or when the camera is positioned within a cloud shadow.
+
+This adaptation is used to improve lighting dynamics and depth perception in low-contrast environmental conditions.
+The effect requires a VAO patch present to function.
+
+## Related
+
+- [setVAOShaderFix](/reference/light/set-vao-shader-fix)
+- [setSpectrumAdaption](/reference/light/set-spectrum-adaption)
+- [getOcclusion](/reference/camera/get-occlusion)

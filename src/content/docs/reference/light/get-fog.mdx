@@ -1,8 +1,34 @@
 ---
 title: getFog
 description: Returns the color of the resulting environmental fog as an rgb object.
+draft: true
 ---
+
+:::caution
+This page may be incomplete, with details subject to change.
+:::
 
 ```lua
 pure.light.getFog()
 ```
+
+## Returns
+
+| Type  | Description                          |
+| :---- | :----------------------------------- |
+| `rgb` | The current environmental fog color. |
+
+## Description
+
+`getFog` returns the color of the resulting environmental fog currently calculated by the weather engine.
+
+Pure generates an exclusive instance of this `rgb` variable for the calling script.
+This allows the object to be manipulated within the current frame without affecting the internal engine state or other scripts.
+The instance is reset at the start of the next frame.
+
+## Related
+
+- [getAmbient](/reference/light/get-ambient)
+- [getSun](/reference/light/get-sun)
+- [getMoon](/reference/light/get-moon)
+- [getLightSource](/reference/light/get-light-source)

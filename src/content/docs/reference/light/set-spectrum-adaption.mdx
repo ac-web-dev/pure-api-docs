@@ -1,8 +1,34 @@
 ---
 title: setSpectrumAdaption
 description: Sets the strength of automatic color temperature compensation for blueshifts in overcast weather.
+draft: true
 ---
 
+:::caution
+This page may be incomplete, with details subject to change.
+:::
+
 ```lua
-pure.light.setSpectrumAdaption()
+pure.light.setSpectrumAdaption(x)
 ```
+
+## Parameters
+
+| Parameter | Type                    | Description                                                                                                           |
+| :-------- | :---------------------- | :-------------------------------------------------------------------------------------------------------------------- |
+| `x`       | `boolean?` \| `number?` | The adaptation intensity. `true` sets the value to `1.0`. If `false`, `nil`, or omitted, the value defaults to `0.0`. |
+
+## Description
+
+`setSpectrumAdaption` defines the strength of Pure's automatic spectrum compensation.
+This system adjusts color temperature and RGB modulation based on the current weather state to correct for environmental color shifts,
+such as the blueshift typically observed in overcast or hazardous conditions.
+
+The function can be toggled using a `bool` or an intensity factor.
+This compensation requires post-processing to be active to produce a visual effect.
+
+## Related
+
+- [setVAOAdaption](/reference/light/set-vao-adaption)
+- [setGlobalBrightness](/reference/light/set-global-brightness)
+- [setLambertGamma](/reference/light/set-lambert-gamma)

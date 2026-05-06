@@ -1,8 +1,32 @@
 ---
 title: setGlobalBrightness
 description: Sets a global multiplier for all world light sources, including sun, moon, and ambient light.
+draft: true
 ---
 
+:::caution
+This page may be incomplete, with details subject to change.
+:::
+
 ```lua
-pure.light.setGlobalBrightness()
+pure.light.setGlobalBrightness(x)
 ```
+
+## Parameters
+
+| Parameter | Type      | Description                                                                    |
+| :-------- | :-------- | :----------------------------------------------------------------------------- |
+| `x`       | `number?` | The global light multiplier. If `nil` or omitted, the value defaults to `1.0`. |
+
+## Description
+
+`setGlobalBrightness` sets a multiplier that affects all environmental light sources simultaneously,
+including the sun, moon, and ambient light.
+
+The value scales the intensity of the world lighting before it is processed by the post-processing pipeline.
+It is used to adjust the overall exposure of the scene without modifying individual light source components or multipliers.
+
+## Related
+
+- [getAmbientLuminance](/reference/light/get-ambient-luminance)
+- [getSunLampDifference](/reference/light/get-sun-lamp-difference)

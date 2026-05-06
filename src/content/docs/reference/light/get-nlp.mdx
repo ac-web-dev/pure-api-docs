@@ -1,8 +1,35 @@
 ---
 title: getNLP
 description: Returns the color of the Night Light Pollution (NLP) source as an rgb object.
+draft: true
 ---
+
+:::caution
+This page may be incomplete, with details subject to change.
+:::
 
 ```lua
 pure.light.getNLP()
 ```
+
+## Returns
+
+| Type  | Description                                    |
+| :---- | :--------------------------------------------- |
+| `rgb` | The current Night Light Pollution (NLP) color. |
+
+## Description
+
+`getNLP` returns the color of the Night Light Pollution (NLP) source currently calculated by the engine.
+This value is derived from the track's configuration and current light pollution density.
+
+Pure generates an exclusive instance of this `rgb` variable for the calling script.
+This allows the object to be manipulated within the current frame without affecting the internal engine state or other scripts.
+The instance is reset at the start of the next frame.
+
+## Related
+
+- [getAmbient](/reference/light/get-ambient)
+- [getSun](/reference/light/get-sun)
+- [getMoon](/reference/light/get-moon)
+- [getLightSource](/reference/light/get-light-source)

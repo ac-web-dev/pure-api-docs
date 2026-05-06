@@ -1,8 +1,31 @@
 ---
 title: getSunLampDifference
 description: Returns the internal multiplier ratio used to balance daylight against artificial lighting.
+draft: true
 ---
+
+:::caution
+This page may be incomplete, with details subject to change.
+:::
 
 ```lua
 pure.light.getSunLampDifference()
 ```
+
+## Returns
+
+| Type     | Description                                                                       |
+| :------- | :-------------------------------------------------------------------------------- |
+| `number` | The multiplier factor used to balance daylight against artificial track lighting. |
+
+## Description
+
+`getSunLampDifference` returns a ratio used to maintain visual balance
+between natural environmental light (the sun) and artificial light sources (track lamps).
+
+The value is calculated based on the current sun elevation and the `light.daylight_multiplier` configuration setting.
+
+## Related
+
+- [getAmbientLuminance](/reference/light/get-ambient-luminance)
+- [setGlobalBrightness](/reference/light/set-global-brightness)

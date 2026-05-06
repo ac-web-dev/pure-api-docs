@@ -1,8 +1,34 @@
 ---
 title: getAmbientLuminance
 description: Returns the calculated luminance value of the environment light.
+draft: true
 ---
+
+:::caution
+This page may be incomplete, with details subject to change.
+:::
 
 ```lua
 pure.light.getAmbientLuminance()
 ```
+
+## Returns
+
+| Type     | Description                                          |
+| :------- | :--------------------------------------------------- |
+| `number` | The calculated luminance of the ambient environment. |
+
+## Description
+
+`getAmbientLuminance` returns the overall intensity of the ambient environment light as a single scalar value.
+This value represents the brightness of the scene excluding direct sunlight.
+
+The returned number accounts for the final composition of environmental factors, including sky color, fog density, and current multipliers.
+It is primarily used for logic that requires a specific brightness threshold,
+such as determining when environmental conditions are dark enough to trigger visual changes or headlight activation.
+
+## Related
+
+- [getAmbient](/reference/light/get-ambient)
+- [getSunLampDifference](/reference/light/get-sun-lamp-difference)
+- [setGlobalBrightness](/reference/light/set-global-brightness)
